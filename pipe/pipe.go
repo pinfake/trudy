@@ -199,10 +199,10 @@ func (t *TrudyPipe) Close() {
 //ReadFromClient reads data from the client end of the pipe. This is typically the proxy-unaware client.
 func (t *TrudyPipe) ReadFromClient(buffer []byte) (n int, err error) {
 	//TODO(kkl): Make timeouts configureable.
-	err = t.clientConn.SetReadDeadline(time.Now().Add(15 * time.Second))
-	if err != nil {
-		return
-	}
+	//err = t.clientConn.SetReadDeadline(time.Now().Add(15 * time.Second))
+	//if err != nil {
+	//	return
+	//}
 	n, err = t.clientConn.Read(buffer)
 	return
 }
@@ -210,7 +210,7 @@ func (t *TrudyPipe) ReadFromClient(buffer []byte) (n int, err error) {
 //WriteToClient writes data to the client end of the pipe. This is typically the proxy-unaware client.
 func (t *TrudyPipe) WriteToClient(buffer []byte) (n int, err error) {
 	//TODO(kkl): Make timeouts configureable.
-	err = t.clientConn.SetWriteDeadline(time.Now().Add(15 * time.Second))
+	err = t.clientConn.SetWriteDeadline(time.Now().Add(60 * time.Second))
 	if err != nil {
 		return
 	}
